@@ -105,9 +105,7 @@ exports.updatePost = async (req, res, next) => {
     post.isTrending = req.body.isTrending === 'on';
     post.isTopStory = req.body.isTopStory === 'on';
     post.published = req.body.published === 'on';
-    // slug, author, likes, views ko touch nahi kar rahe
-
-    await post.save(); // pre('save') hook contentHtml dobara sanitize karke bana deta hai
+    await post.save();
 
     res.redirect('/admin/posts?msg=updated');
   } catch (err) {
